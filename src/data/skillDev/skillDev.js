@@ -1,4 +1,4 @@
-module.exports = [
+export default [
     {
         exercise: "45 Degree Side Run"
     },
@@ -6,9 +6,12 @@ module.exports = [
         exercise: "Decelerations"
     },
     {
-        exercise: "Shin Angle Lateral Decels"
+        exercise: "Lateral Shin Angle Decels"
     },
     {
         exercise: "Split Stance Decels"
     },
+    {
+        exercise: "Decelerations to Athletic Position"
+    }
 ];
