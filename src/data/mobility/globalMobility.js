@@ -1,4 +1,4 @@
-export default [
+module.exports = [
     {
         exercise: "All 4's Rotations"
     },

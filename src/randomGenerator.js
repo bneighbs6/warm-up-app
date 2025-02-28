@@ -1,11 +1,11 @@
-import easyRaiseExercises from "./data/raise/easyRaiseExercises.js";
-import hardRaiseExercises from "./data/raise/hardRaiseExercises.js";
-import globalActivation from "./data/activate/globalActivation.js";
-import hipActivation from "./data/activate/pelvicActivation.js";
-import shoulderActivation from "./data/activate/shoulderActivation.js";
-import globalMobility from "./data/mobility/globalMobility.js";
-import potentiate from "./data/potentiate/potentiate.js";
-import skillDev from "./data/skillDev/skillDev.js";
+const easyRaiseExercises = require("./data/raise/easyRaiseExercises");
+const hardRaiseExercises = require("./data/raise/hardRaiseExercises");
+const globalActivation = require("./data/activate/globalActivation");
+const hipActivation = require("./data/activate/pelvicActivation");
+const shoulderActivation = require("./data/activate/shoulderActivation");
+const globalMobility = require("./data/mobility/globalMobility");
+const potentiate = require("./data/potentiate/potentiate");
+const skillDev = require("./data/skillDev/skillDev");
 
 // Combining all exercises into one object
 const exercises = {

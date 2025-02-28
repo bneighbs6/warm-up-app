@@ -1,4 +1,4 @@
-export default [
+module.exports = [
     {
         exercise: "Low Gallop Lateral"
     },

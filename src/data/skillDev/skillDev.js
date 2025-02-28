@@ -1,4 +1,4 @@
-export default [
+module.exports = [
     {
         exercise: "45 Degree Side Run"
     },
