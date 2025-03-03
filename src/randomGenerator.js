@@ -43,6 +43,10 @@ for (const [key, value] of Object.entries(exercises)) {
 // Output the selected exercises
 // console.log(threeExercises); 
 // console.log(fourExercises);
-console.log(fiveExercsises)
+console.log(fiveExercsises);
+
+module.exports = {
+    fiveExercsises
+};
 
 
