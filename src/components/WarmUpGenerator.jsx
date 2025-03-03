@@ -1,20 +1,36 @@
-import React from "react";
-import { fiveExercsises } from "../randomGenerator"; // Need to adjust the algorithm to get random warm ups
+// WarmUpGenerator.jsx
+
+import React, { useState } from "react";
+import { generateFiveExercises } from "../randomGenerator";
 
 function WarmUpGenerator() {
+    const [exercises, setExercises] = useState(null); // Initialize to null
+
+    const handleRandomize = () => {
+        setExercises(generateFiveExercises());
+    };
+
     return (
         <div>
             <h2>Warm Up Generator</h2>
-            {Object.entries(fiveExercsises).map(([category, exercises]) => (
-                <div key={category}>
-                    <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
-                    <ul>
-                        {exercises.map((exercise, index) => ( // Maps the exercise array taken from Object.entries(fiveExercises)
-                            <li key={index}>{exercise.exercise}</li> // {exercise.exercise} takes the exercise from data folders and displays to f/e
-                        ))}
-                    </ul>
-                </div>
-            ))}
+            <button 
+            onClick={handleRandomize}
+            >Randomize Exercises</button>
+            {exercises ? ( // Check if exercises is not null
+                Object.entries(exercises).map(([category, exerciseList]) => (
+                    <div key={category}>
+                        {/* Displays each Category of Warm Up */}
+                        <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3> 
+                        <ul>
+                            {exerciseList.map((exercise, index) => (
+                                <li key={index}>{exercise.exercise}</li> // Displays each exercise -> gotten from exercise data in the data folder
+                            ))}
+                        </ul>
+                    </div>
+                ))
+            ) : (
+                <p>Welcome to THE Warm Up App. Click the button to randomize!</p> // Message when exercises are null
+            )}
         </div>
     );
 }

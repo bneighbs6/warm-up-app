@@ -22,31 +22,17 @@ function getRandomExercises(exerciseArray, count) {
     return shuffled.slice(0, count);
 }
 
-const threeExercises = {};
+function generateFiveExercises() {
+    const warmUp = {};
 
-for (const [key, value] of Object.entries(exercises)) {
-    threeExercises[key] = getRandomExercises(value, 3);
+    for (const [key, value] of Object.entries(exercises)) {
+        warmUp[key] = getRandomExercises(value, 5);
+    }
+    return warmUp; 
 }
-
-const fourExercises = {};
-
-for (const [key, value] of Object.entries(exercises)) {
-    fourExercises[key] = getRandomExercises(value, 4);
-}
-
-const fiveExercsises = {};
-
-for (const [key, value] of Object.entries(exercises)) {
-    fiveExercsises[key] = getRandomExercises(value, 5);
-}
-
-// Output the selected exercises
-// console.log(threeExercises); 
-// console.log(fourExercises);
-console.log(fiveExercsises);
 
 module.exports = {
-    fiveExercsises
+    generateFiveExercises
 };
 
 

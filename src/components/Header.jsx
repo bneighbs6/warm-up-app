@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
     return (
         <div>
-            <h1>Header Component</h1>
+            <h1>THE Warm Up App</h1>
         </div>
     );
 }
