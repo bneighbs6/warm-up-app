@@ -1,13 +1,13 @@
 // WarmUpGenerator.jsx
 
 import React, { useState } from "react";
-import { generateFiveExercises } from "../randomGenerator";
+import { generateWarmUp } from "../randomGenerator";
 
 function WarmUpGenerator() {
     const [exercises, setExercises] = useState(null); // Initialize to null
 
     const handleRandomize = () => {
-        setExercises(generateFiveExercises());
+        setExercises(generateWarmUp());
     };
 
     return (

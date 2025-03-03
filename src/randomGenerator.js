@@ -22,7 +22,7 @@ function getRandomExercises(exerciseArray, count) {
     return shuffled.slice(0, count);
 }
 
-function generateFiveExercises() {
+function generateWarmUp() {
     const warmUp = {};
 
     for (const [key, value] of Object.entries(exercises)) {
@@ -34,7 +34,7 @@ function generateFiveExercises() {
 }
 
 module.exports = {
-    generateFiveExercises
+    generateWarmUp
 };
 
 
