@@ -1,5 +1,6 @@
 import React from "react";
-import { fiveExercsises } from "../randomGenerator";
+import { fiveExercsises } from "../randomGenerator"; // Need to adjust the algorithm to get random warm ups
+
 function WarmUpGenerator() {
     return (
         <div>
@@ -8,8 +9,8 @@ function WarmUpGenerator() {
                 <div key={category}>
                     <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
                     <ul>
-                        {exercises.map((exercise, index) => (
-                            <li key={index}>{exercise.exercise}</li> // Adjust this if exercise is an object
+                        {exercises.map((exercise, index) => ( // Maps the exercise array taken from Object.entries(fiveExercises)
+                            <li key={index}>{exercise.exercise}</li> // {exercise.exercise} takes the exercise from data folders and displays to f/e
                         ))}
                     </ul>
                 </div>
