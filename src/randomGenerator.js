@@ -26,7 +26,9 @@ function generateFiveExercises() {
     const warmUp = {};
 
     for (const [key, value] of Object.entries(exercises)) {
-        warmUp[key] = getRandomExercises(value, 5);
+        // Determine the number of exercises to generate based on the category
+        const count = (key === 'potentiate' || key === 'skillDev') ? 3 : 5;
+        warmUp[key] = getRandomExercises(value, count);
     }
     return warmUp; 
 }
