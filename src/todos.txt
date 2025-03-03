@@ -1,5 +1,0 @@
-TODO:
-Inside out coding (backend first, frontend last)
-Create each category of warm ups with an (array/objects) x
-Create an algortithm that randomizes each category x
-Displays each warm up when you click randomize
