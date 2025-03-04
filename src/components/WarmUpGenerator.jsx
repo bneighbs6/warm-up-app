@@ -1,7 +1,6 @@
-// WarmUpGenerator.jsx
-
 import React, { useState } from "react";
 import { generateWarmUp } from "../randomGenerator";
+import WarmUpCard from "./WarmUpCard";
 
 function WarmUpGenerator() {
     const [exercises, setExercises] = useState(null); // Initialize to null
@@ -13,19 +12,11 @@ function WarmUpGenerator() {
     return (
         <div>
             <h2>Warm Up Generator</h2>
-            <button 
-            onClick={handleRandomize}
-            >Randomize Exercises</button>
+            <button onClick={handleRandomize}>Randomize Exercises</button>
             {exercises ? ( // Check if exercises is not null
                 Object.entries(exercises).map(([category, exerciseList]) => (
                     <div key={category}>
-                        {/* Displays each Category of Warm Up */}
-                        <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3> 
-                        <ul>
-                            {exerciseList.map((exercise, index) => (
-                                <li key={index}>{exercise.exercise}</li> // Displays each exercise -> gotten from exercise data in the data folder
-                            ))}
-                        </ul>
+                        <WarmUpCard category={category} exercises={exerciseList} />
                     </div>
                 ))
             ) : (
