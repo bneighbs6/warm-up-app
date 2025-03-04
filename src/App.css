@@ -4,14 +4,17 @@
 
 .warmUpButton {
   background-color: #00e6e6;
+  color: black; 
+  margin: 5px;
+  padding: 5px;
 }
 
 .warmUpCard {
-  text-align: center;
+  border: 10px solid black; 
 }
 
 .warmUpCardTitle {
   font-weight: 800;
+  color: black; 
   background-color: #00e6e6;
 }
-
