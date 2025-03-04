@@ -22,6 +22,7 @@ function getRandomExercises(exerciseArray, count) {
     return shuffled.slice(0, count);
 }
 
+// Will generate a warm up that gives 3 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
 function generateThreeByThreeWarmUp() {
     const warmUp = {};
     // Determine the number of exercises to generate based on the category
@@ -32,6 +33,7 @@ function generateThreeByThreeWarmUp() {
     return warmUp;
 }
 
+// Will generate a warm up that gives 4 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
 function generateThreeByFourWarmUp() {
     const warmUp = {};
     // Determine the number of exercises to generate based on the category
@@ -42,6 +44,7 @@ function generateThreeByFourWarmUp() {
     return warmUp;
 }
 
+// Will generate a warm up that gives 5 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
 function generateThreeByFiveWarmUp() {
     const warmUp = {};
 
