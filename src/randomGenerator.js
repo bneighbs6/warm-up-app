@@ -22,6 +22,26 @@ function getRandomExercises(exerciseArray, count) {
     return shuffled.slice(0, count);
 }
 
+function generateThreeByThreeWarmUp() {
+    const warmUp = {};
+    // Determine the number of exercises to generate based on the category
+    for (const [key, value] of Object.entries(exercises)) {
+        const count = (key === 'potentiate' || key === "skillDev") ? 2 : 3;
+        warmUp[key] = getRandomExercises(value, count) 
+    }
+    return warmUp;
+}
+
+function generateThreeByFourWarmUp() {
+    const warmUp = {};
+    // Determine the number of exercises to generate based on the category
+    for (const [key, value] of Object.entries(exercises)) {
+        const count = (key === 'potentiate' || key === "skillDev") ? 2 : 4;
+        warmUp[key] = getRandomExercises(value, count) 
+    }
+    return warmUp;
+}
+
 function generateThreeByFiveWarmUp() {
     const warmUp = {};
 
@@ -34,6 +54,8 @@ function generateThreeByFiveWarmUp() {
 }
 
 module.exports = {
+    generateThreeByThreeWarmUp,
+    generateThreeByFourWarmUp,
     generateThreeByFiveWarmUp
 };
 
