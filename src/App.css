@@ -9,6 +9,10 @@
   padding: 5px;
 }
 
+.warmUpGenerator {
+  max-width: 75%;
+}
+
 .warmUpCard {
   border: 10px solid black; 
 }
