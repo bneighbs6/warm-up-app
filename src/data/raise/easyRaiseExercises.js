@@ -27,7 +27,7 @@ module.exports = [
         exercise: "Low Gallop Backward"
     },
     {
-        exercise: "Low Gallop Forward 2-2"
+        exercise: "Low Gallop Forward Skip"
     },
     {
         exercise: "High Gallop Forward"
