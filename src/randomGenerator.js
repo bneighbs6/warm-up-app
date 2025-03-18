@@ -7,6 +7,8 @@ const globalMobility = require("./data/mobility/globalMobility");
 const potentiate = require("./data/potentiate/potentiate");
 const skillDev = require("./data/skillDev/skillDev");
 const highIntensityWarmUp = require("./data/presets/highIntensityWarmUp");
+const lowIntensityWarmUp = require("./data/presets/lowIntensityWarmUp");
+const recoveryWarmUp = require("./data/presets/recoveryWarmUp");
 
 // Combining all exercises into one object
 const exercises = {
@@ -65,7 +67,7 @@ function generateThreeByFiveWarmUp() {
     return warmUp; 
 }
 
-// Returns High Intensity Warm Up as an object
+// Returns High Intensity Warm Up array as an object
 function generateHighIntensityWarmUp() {
     const warmUp = {
         "High Intensity": highIntensityWarmUp.map((exercise, category) => ({
@@ -76,6 +78,27 @@ function generateHighIntensityWarmUp() {
     return warmUp;
 }
 
+// Returns Low Intensity Warm Up array as an object
+function generateLowIntensityWarmUp() {
+    const warmUp = {
+        "Low Intensity": lowIntensityWarmUp.map((exercise, category) => ({
+            ...exercise,
+            ...category,
+        }))
+    };
+    return warmUp; 
+}
+
+function generateRecoveryWarmUp() {
+    const warmUp = {
+        "Recovery": recoveryWarmUp.map((exercise, category) => ({
+            ...exercise,
+            ...category,
+        })) 
+    };
+    return warmUp; 
+}
+
 
 
 module.exports = {
@@ -83,6 +106,8 @@ module.exports = {
     generateThreeByFourWarmUp,
     generateThreeByFiveWarmUp,
     generateHighIntensityWarmUp,
+    generateLowIntensityWarmUp,
+    generateRecoveryWarmUp
 };
 
 
