@@ -9,6 +9,7 @@ const skillDev = require("./data/skillDev/skillDev");
 const highIntensityWarmUp = require("./data/presets/highIntensityWarmUp");
 const lowIntensityWarmUp = require("./data/presets/lowIntensityWarmUp");
 const recoveryWarmUp = require("./data/presets/recoveryWarmUp");
+const beginnerAthleteWarmUp = require("./data/presets/beginnerAthleteWarmUp");
 
 // Combining all exercises into one object
 const exercises = {
@@ -100,6 +101,17 @@ function generateRecoveryWarmUp() {
     return warmUp; 
 }
 
+// Returns Beginner Athlete Warm Up array as an Object
+function generateBeginnerAthleteWarmUp() {
+    const warmUp = {
+        "Beginner Athlete": beginnerAthleteWarmUp.map((exercise, category) => ({
+            ...exercise,
+            ...category,
+        }))
+    };
+    return warmUp; 
+}
+
 
 
 module.exports = {
@@ -108,7 +120,8 @@ module.exports = {
     generateThreeByFiveWarmUp,
     generateHighIntensityWarmUp,
     generateLowIntensityWarmUp,
-    generateRecoveryWarmUp
+    generateRecoveryWarmUp,
+    generateBeginnerAthleteWarmUp,
 };
 
 

@@ -112,7 +112,7 @@ function WarmUpGenerator() {
             </button>
             {/* If exercises exists, and is an array, then it maps over the exercises array directly and displays it */}
             {/* If exercises exists, and is an object, then it using the Object.entries of the exercises to map over it and display it */}
-            {/* If exercises ! exists, then it dispalys a message */}
+            {/* If !exercises then it dispalys a message */}
             {exercises ? (
               // If exercises is an object, iterate over its entries
               Object.entries(exercises).map(([category, exerciseList]) => (
