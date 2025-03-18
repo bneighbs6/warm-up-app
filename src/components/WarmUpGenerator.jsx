@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp, generateLowIntensityWarmUp, generateRecoveryWarmUp } from "../randomGenerator";
+import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp, generateLowIntensityWarmUp, generateRecoveryWarmUp, generateBeginnerAthleteWarmUp } from "../randomGenerator";
 import WarmUpCard from "./WarmUpCard";
 import { Modal } from "react-bootstrap";
 
@@ -45,6 +45,11 @@ function WarmUpGenerator() {
       toggleBold("recovery")
     }
 
+    const handleBeginnerAthleteWarmUpClick = () => {
+      setExercises(generateBeginnerAthleteWarmUp()); // Set exercises = to the result of generateBeginnerAthleteWarmUp(); 
+      toggleBold("beginner");
+    }
+
     return (
       <div>
         <Modal.Dialog className="warmUpGenerator">
@@ -79,6 +84,16 @@ function WarmUpGenerator() {
             }}
             >
               Recovery Warm Up
+            </button>
+            <button 
+            className="warmUpButton"
+            onClick={handleBeginnerAthleteWarmUpClick}
+            style={{
+              fontWeight: boldButton === "beginner" ? "bold" : "normal",
+              border: boldButton === "beginner" ? "5px solid black" : "none",     
+            }}
+            >
+              Beginner Athlete Warm Up
             </button>
             <button
               className="warmUpButton"
