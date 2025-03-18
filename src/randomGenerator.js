@@ -6,6 +6,7 @@ const shoulderActivation = require("./data/activate/shoulderActivation");
 const globalMobility = require("./data/mobility/globalMobility");
 const potentiate = require("./data/potentiate/potentiate");
 const skillDev = require("./data/skillDev/skillDev");
+const highIntensityWarmUp = require("./data/presets/highIntensityWarmUp");
 
 // Combining all exercises into one object
 const exercises = {
@@ -23,43 +24,65 @@ function getRandomExercises(exerciseArray, count) {
 }
 
 // Will generate a warm up that gives 3 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
+// Generates Warm Up as an object
 function generateThreeByThreeWarmUp() {
     const warmUp = {};
-    // Determine the number of exercises to generate based on the category
     for (const [key, value] of Object.entries(exercises)) {
         const count = (key === 'potentiate' || key === "skillDev") ? 2 : 3;
-        warmUp[key] = getRandomExercises(value, count) 
+        warmUp[key] = getRandomExercises(value, count).map(exercise => ({
+            ...exercise,
+            category: key // Add the category to each exercise
+        }));
     }
     return warmUp;
 }
 
 // Will generate a warm up that gives 4 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
+// Generates Warm Up as an object
 function generateThreeByFourWarmUp() {
     const warmUp = {};
-    // Determine the number of exercises to generate based on the category
     for (const [key, value] of Object.entries(exercises)) {
         const count = (key === 'potentiate' || key === "skillDev") ? 2 : 4;
-        warmUp[key] = getRandomExercises(value, count) 
+        warmUp[key] = getRandomExercises(value, count).map(exercise => ({
+            ...exercise,
+            category: key // Add the category to each exercise
+        }));
     }
     return warmUp;
 }
 
 // Will generate a warm up that gives 5 exercises for raise, activate, and mobilize. Potentiate and skillDev will always have 2 exercises
+// Generates Warm Up as an object
 function generateThreeByFiveWarmUp() {
     const warmUp = {};
-
     for (const [key, value] of Object.entries(exercises)) {
-        // Determine the number of exercises to generate based on the category
         const count = (key === 'potentiate' || key === 'skillDev') ? 2 : 5;
-        warmUp[key] = getRandomExercises(value, count);
+        warmUp[key] = getRandomExercises(value, count).map(exercise => ({
+            ...exercise,
+            category: key // Add the category to each exercise
+        }));
     }
     return warmUp; 
 }
 
+// Returns High Intensity Warm Up as an object
+function generateHighIntensityWarmUp() {
+    const warmUp = {
+        "High Intensity": highIntensityWarmUp.map((exercise, category) => ({
+            ...exercise,
+            ...category,
+        }))
+    };
+    return warmUp;
+}
+
+
+
 module.exports = {
     generateThreeByThreeWarmUp,
     generateThreeByFourWarmUp,
-    generateThreeByFiveWarmUp
+    generateThreeByFiveWarmUp,
+    generateHighIntensityWarmUp,
 };
 
 

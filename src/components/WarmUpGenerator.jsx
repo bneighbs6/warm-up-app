@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp } from "../randomGenerator";
+import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp } from "../randomGenerator";
 import WarmUpCard from "./WarmUpCard";
-import { Card, Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 function WarmUpGenerator() {
     const [exercises, setExercises] = useState(null); // Initialize to null
@@ -19,24 +19,38 @@ function WarmUpGenerator() {
         toggleBold('four');
     };
 
-    // Randomizes a 3x5 warm up
+    // Randomizes a 3x3 warm up
     const handleThreeRandomize = () => {
         setExercises(generateThreeByThreeWarmUp());
         toggleBold('three');
     };
 
     // Toggles button to bold
-    // If prevButton === the same button that is pushed, it will remain bold. 
-    // if prevButton !== button, then that button will become bold
     const toggleBold = (button) => {
         setBoldButton(prevButton => (prevButton === button ? prevButton : button)); // Keep the same button bold or switch to the new one
     };
+
+    const handleHighIntensityWarmUpClick = () => {
+        setExercises(generateHighIntensityWarmUp()); // Set exercises to the array
+        setBoldButton("highIntensity");
+    }
 
     return (
       <div>
         <Modal.Dialog className="warmUpGenerator">
           <div>
             <h2>Warm Up Generator</h2>
+            <button
+              className="warmUpButton"
+              onClick={handleHighIntensityWarmUpClick}
+              style={{
+                fontWeight: boldButton === "highIntensity" ? "bold" : "normal",
+                border:
+                  boldButton === "highIntensity" ? "5px solid black" : "none",
+              }}
+            >
+              High Intensity Warm Up
+            </button>
             <button
               className="warmUpButton"
               onClick={handleThreeRandomize}
@@ -67,14 +81,18 @@ function WarmUpGenerator() {
             >
               Randomize a 3x5 Warm Up
             </button>
-            {exercises ? ( // Check if exercises is not null
+            {/* If exercises exists, and is an array, then it maps over the exercises array directly and displays it */}
+            {/* If exercises exists, and is an object, then it using the Object.entries of the exercises to map over it and display it */}
+            {/* If exercises ! exists, then it dispalys a message */}
+            {exercises ? (
+              // If exercises is an object, iterate over its entries
               Object.entries(exercises).map(([category, exerciseList]) => (
                 <div key={category}>
                   <WarmUpCard category={category} exercises={exerciseList} />
                 </div>
               ))
             ) : (
-              <p>Welcome to THE Warm Up App. Click a button to randomize!</p> // Message when exercises are null
+              <p>Welcome to THE Warm Up App. Click a button to randomize!</p>
             )}
           </div>
         </Modal.Dialog>
