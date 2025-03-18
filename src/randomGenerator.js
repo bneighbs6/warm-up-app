@@ -89,6 +89,7 @@ function generateLowIntensityWarmUp() {
     return warmUp; 
 }
 
+// Returns Recovery Warm Up array as an Objects
 function generateRecoveryWarmUp() {
     const warmUp = {
         "Recovery": recoveryWarmUp.map((exercise, category) => ({

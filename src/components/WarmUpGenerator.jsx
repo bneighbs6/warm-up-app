@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp } from "../randomGenerator";
+import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp, generateLowIntensityWarmUp, generateRecoveryWarmUp } from "../randomGenerator";
 import WarmUpCard from "./WarmUpCard";
 import { Modal } from "react-bootstrap";
 
@@ -9,19 +9,19 @@ function WarmUpGenerator() {
 
     // Randomizes a 3x5 warm up
     const handleFiveRandomize = () => {
-        setExercises(generateThreeByFiveWarmUp());
+        setExercises(generateThreeByFiveWarmUp()); // Set exercises = to the result of generateThreeByFiveWarmUp()
         toggleBold('five');
     };
 
     // Randomizes a 3x4 warm up
     const handleFourRandomize = () => {
-        setExercises(generateThreeByFourWarmUp());
+        setExercises(generateThreeByFourWarmUp()); // Set exercises = to the result of generateThreeByFourWarmUp()
         toggleBold('four');
     };
 
     // Randomizes a 3x3 warm up
     const handleThreeRandomize = () => {
-        setExercises(generateThreeByThreeWarmUp());
+        setExercises(generateThreeByThreeWarmUp()); // Set exercises = to the result of generateThreeByThreeWarmUp()
         toggleBold('three');
     };
 
@@ -31,8 +31,18 @@ function WarmUpGenerator() {
     };
 
     const handleHighIntensityWarmUpClick = () => {
-        setExercises(generateHighIntensityWarmUp()); // Set exercises to the array
+        setExercises(generateHighIntensityWarmUp()); // Set exercises = to the result of generateHighIntensityWarmUP()
         setBoldButton("highIntensity");
+    }
+
+    const handleLowIntensityWarmUpClick = () => {
+      setExercises(generateLowIntensityWarmUp()); // Set exercises = to the result of generateLowIntensityWarmUP()
+      toggleBold("lowIntensity");
+    }
+
+    const handleRecoveryWarmUpClick = () => {
+      setExercises(generateRecoveryWarmUp()); // Set exercises = to the result of generateRecoveryWarmUP(); 
+      toggleBold("recovery")
     }
 
     return (
@@ -50,6 +60,25 @@ function WarmUpGenerator() {
               }}
             >
               High Intensity Warm Up
+            </button>
+            <button
+            className="warmUpButton"
+            onClick={handleLowIntensityWarmUpClick}
+            style={{
+              fontWeight: boldButton === "lowIntensity" ? "bold" : "normal",
+              border: boldButton === "lowIntensity" ? "5px solid black" : "none",
+            }}
+            >Low Intensity Warm Up
+            </button>
+            <button 
+            className="warmUpButton"
+            onClick={handleRecoveryWarmUpClick}
+            style={{
+              fontWeight: boldButton === "recovery" ? "bold" : "normal",
+              border: boldButton === "recovery" ? "5px solid black" : "none",     
+            }}
+            >
+              Recovery Warm Up
             </button>
             <button
               className="warmUpButton"
