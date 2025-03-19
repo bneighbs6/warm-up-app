@@ -7,10 +7,7 @@ function PresetWarmUpGenerator({
   handleHighIntensityWarmUpClick, 
   handleLowIntensityWarmUpClick, 
   handleRecoveryWarmUpClick, 
-  handleBeginnerAthleteWarmUpClick, 
-  handleThreeRandomize, 
-  handleFourRandomize, 
-  handleFiveRandomize 
+  handleBeginnerAthleteWarmUpClick,
 }) {
     return (
       <div>

@@ -12,15 +12,19 @@ function Layout() {
     const [view, setView] = useState("welcome"); // Begins each view state as the welcome page 
 
     const handlePresetClick = () => {
-        setView("presets");
+        setView("preset");
+        setBoldButton(null);
     }
     
     const handleRandomClick = () => {
         setView("random");
+        setBoldButton(null);
     }
 
-    const handleWelcomeClick = () => {
-        setView("generatorView");
+    const handleHomeClick = () => {
+            setView("welcome"); // Sets view = welcome screen
+            setExercises(null); // Removes all previously clicked warm ups from the screen
+            setBoldButton(null); // Removes all bold buttons previously clicked
     }
 
     // Define the randomization functions here
@@ -66,42 +70,77 @@ function Layout() {
     return (
       <>
         <Header />
-        {view === "welcome" ? (
-          <>
-            <button onClick={handlePresetClick}>Preset</button>
-            <button onClick={handleRandomClick}>Random</button>
-          </>
-        ) : (
-          <>
-            <RandomWarmUpGenerator
-              exercises={exercises}
-              boldButton={boldButton}
-              handleThreeRandomize={handleThreeRandomize}
-              handleFourRandomize={handleFourRandomize}
-              handleFiveRandomize={handleFiveRandomize}
-            />
-            <PresetWarmUpGenerator
-              exercises={exercises}
-              boldButton={boldButton}
-              handleHighIntensityWarmUpClick={handleHighIntensityWarmUpClick}
-              handleLowIntensityWarmUpClick={handleLowIntensityWarmUpClick}
-              handleRecoveryWarmUpClick={handleRecoveryWarmUpClick}
-              handleBeginnerAthleteWarmUpClick={
-                handleBeginnerAthleteWarmUpClick
-              }
-            />
-            {/* Conditional rendering of WarmUpCard */}
-            {exercises ? (
-              Object.entries(exercises).map(([category, exerciseList]) => (
+        {(() => {
+            if (view === "welcome") {
+                return (
+                  <>
+                    <h2>Choose an Option</h2>
+                    <button className="homeButton" onClick={handleHomeClick}>
+                      Home
+                    </button>
+                    <button
+                      className="presetButton"
+                      onClick={handlePresetClick}
+                    >
+                      Preset
+                    </button>
+                    <button
+                      className="randomButton"
+                      onClick={handleRandomClick}
+                    >
+                      Random
+                    </button>
+                  </>
+                );
+            } else if (view === "preset") {
+                return (
+                  <>
+                    <button
+                    onClick={handleHomeClick}
+                    className="homeButton"
+                    >Home</button>
+                    <PresetWarmUpGenerator
+                      exercises={exercises}
+                      boldButton={boldButton}
+                      handleHighIntensityWarmUpClick={
+                        handleHighIntensityWarmUpClick
+                      }
+                      handleLowIntensityWarmUpClick={
+                        handleLowIntensityWarmUpClick
+                      }
+                      handleRecoveryWarmUpClick={handleRecoveryWarmUpClick}
+                      handleBeginnerAthleteWarmUpClick={
+                        handleBeginnerAthleteWarmUpClick
+                      }
+                    />
+                  </>
+                );
+            } else if (view === "random") {
+                return (
+                  <>
+                    <button
+                    className="homeButton"
+                    onClick={handleHomeClick}>Home</button>
+                    <RandomWarmUpGenerator
+                      exercises={exercises}
+                      boldButton={boldButton}
+                      handleThreeRandomize={handleThreeRandomize}
+                      handleFourRandomize={handleFourRandomize}
+                      handleFiveRandomize={handleFiveRandomize}
+                    />
+                  </>
+                );
+            }
+        })()}
+                {/* Conditional rendering of WarmUpCard */}
+                {exercises && (
+            Object.entries(exercises).map(([category, exerciseList]) => (
                 <div key={category}>
-                  <WarmUpCard category={category} exercises={exerciseList} />
+                    <WarmUpCard category={category} exercises={exerciseList} />
                 </div>
-              ))
-            ) : (
-              <p>Welcome to THE Warm Up App. Click a button to randomize!</p>
-            )}
-          </>
+            ))
         )}
+        {/* <Footer /> */}
       </>
     );
 }
