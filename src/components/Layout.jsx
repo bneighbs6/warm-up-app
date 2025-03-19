@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
 import Header from './Header';
-import WarmUpGenerator from './WarmUpGenerator';
+import RandomWarmUpGenerator from './RandomWarmUpGenerator';
+import PresetWarmUpGenerator from "./PresetWarmUpGenerator";
 import { generateThreeByThreeWarmUp, generateThreeByFourWarmUp, generateThreeByFiveWarmUp, generateHighIntensityWarmUp, generateLowIntensityWarmUp, generateRecoveryWarmUp, generateBeginnerAthleteWarmUp } from "../randomGenerator";
 import WarmUpCard from "./WarmUpCard";
 
@@ -16,6 +17,10 @@ function Layout() {
     
     const handleRandomClick = () => {
         setView("random");
+    }
+
+    const handleWelcomeClick = () => {
+        setView("generatorView");
     }
 
     // Define the randomization functions here
@@ -61,28 +66,42 @@ function Layout() {
     return (
       <>
         <Header />
-        <WarmUpGenerator 
-          exercises={exercises}
-          boldButton={boldButton}
-          handleHighIntensityWarmUpClick={handleHighIntensityWarmUpClick}
-          handleLowIntensityWarmUpClick={handleLowIntensityWarmUpClick}
-          handleRecoveryWarmUpClick={handleRecoveryWarmUpClick}
-          handleBeginnerAthleteWarmUpClick={handleBeginnerAthleteWarmUpClick}
-          handleThreeRandomize={handleThreeRandomize}
-          handleFourRandomize={handleFourRandomize}
-          handleFiveRandomize={handleFiveRandomize}
-        />
-        {/* Conditional rendering of WarmUpCard */}
-        {exercises ? (
-          Object.entries(exercises).map(([category, exerciseList]) => (
-            <div key={category}>
-              <WarmUpCard category={category} exercises={exerciseList} />
-            </div>
-          ))
+        {view === "welcome" ? (
+          <>
+            <button onClick={handlePresetClick}>Preset</button>
+            <button onClick={handleRandomClick}>Random</button>
+          </>
         ) : (
-          <p>Welcome to THE Warm Up App. Click a button to randomize!</p>
+          <>
+            <RandomWarmUpGenerator
+              exercises={exercises}
+              boldButton={boldButton}
+              handleThreeRandomize={handleThreeRandomize}
+              handleFourRandomize={handleFourRandomize}
+              handleFiveRandomize={handleFiveRandomize}
+            />
+            <PresetWarmUpGenerator
+              exercises={exercises}
+              boldButton={boldButton}
+              handleHighIntensityWarmUpClick={handleHighIntensityWarmUpClick}
+              handleLowIntensityWarmUpClick={handleLowIntensityWarmUpClick}
+              handleRecoveryWarmUpClick={handleRecoveryWarmUpClick}
+              handleBeginnerAthleteWarmUpClick={
+                handleBeginnerAthleteWarmUpClick
+              }
+            />
+            {/* Conditional rendering of WarmUpCard */}
+            {exercises ? (
+              Object.entries(exercises).map(([category, exerciseList]) => (
+                <div key={category}>
+                  <WarmUpCard category={category} exercises={exerciseList} />
+                </div>
+              ))
+            ) : (
+              <p>Welcome to THE Warm Up App. Click a button to randomize!</p>
+            )}
+          </>
         )}
-        {/* <Footer /> */}
       </>
     );
 }
